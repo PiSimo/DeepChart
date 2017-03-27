@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+body{
+  background-color:  #512da8;
+}
+
+.top{
+  z-index: 17;
+  position:fixed;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  width:100%;
+  margin-left: -10px;
+  margin-top: -10px;
+  margin-right: -10px;
+  height: 120px;
+  background-color:  #512da8;
+}
+.middle{
+  margin-left: 20%;
+  float:left;
+}
+.title{
+  color:white;
+  font-size:35px;
+  font-style:italic;
+  font-weight: bold;
+  padding:none;
+  text-shadow: 1px 0px 5px  #000;
+}
+.opts{
+  float:left;
+  width:510px;
+  height: 120px;
+  margin-left:17%;
+}
+.opt{
+  float:left;
+  width:167px;
+  height: 120px;
+}
+.opt a{
+  text-decoration: none;
+}
+.links{
+  color:#fafafa;
+  font-size:20px;
+  margin-top: 50px;
+  margin-left: 60px;
+  transition-duration: 1s;
+}
+.links:hover{
+  text-shadow: 0px 0px 10px #fff;
+}
+
+#boxA{
+  z-index: -1;
+  widht:105%;
+  position: relative;
+  margin-top: 117px;
+  margin-right: -10px;
+  margin-left: -10px;
+
+  background-image: url("./code.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:#fff;
+  height:500px;
+
+}
+#opacity{
+background-color: #37474f;
+opacity: 0.8;
+}
+#contentA{
+  width:700px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#boxB{
+  background-color:#37474f;
+  z-index: -1;
+  widht:105%;
+  position: relative;
+  margin-right: -10px;
+  margin-left: -10px;
+
+  height:500px;
+}
