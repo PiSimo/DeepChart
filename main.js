@@ -33,12 +33,59 @@ function getKeras(inputText){
     if(lines[i].indexOf("Dense") != -1){
         layersType.push("fc");
     }
-    if(lines[i].indexOf("GRU") != -1){
-      layersType.push("gru");
-    }
     if(lines[i].indexOf("Dropout") != -1){
       layersType.push("dropout");
     }
+    if(lines[i].indexOf("Flatten") != -1){
+      layersType.push("flat");
+    }
+    if(lines[i].indexOf("Reshape") != -1){
+      layersType.push("reshape");
+    }
+    //Images
+    if(lines[i].indexOf("Conv1D") != -1){
+      layersType.push("conv1");
+    }
+    if(lines[i].indexOf("Conv2D") != -1){
+      layersType.push("conv2");
+    }
+    if(lines[i].indexOf("Conv3D") != -1){
+      layersType.push("conv3");  
+    }
+    if(lines[i].indexOf("MaxPooling1D") != -1){
+      layersType.push("maxp1");
+    }
+    if(lines[i].indexOf("MaxPooling2D") != -1){
+      layersType.push("maxp2");
+    }
+     if(lines[i].indexOf("MaxPooling3D") != -1){
+      layersType.push("maxp3");
+    }
+    if(lines[i].indexOf("AveragePooling1D") != -1){
+      layersType.push("avep1");
+    }
+    if(lines[i].indexOf("AveragePooling2D") != -1){
+      layersType.push("avep2");
+    }
+     if(lines[i].indexOf("AveragePooling3D") != -1){
+      layersType.push("avep3");
+    }
+    //RNN
+     if(lines[i].indexOf("Recurrent") != -1 || lines[i].indexOf("SimpleRNN") != -1 ){
+      layersType.push("rnn");
+     }
+     if(lines[i].indexOf("GRU") != -1){
+      layersType.push("gru");
+     }
+     if(lines[i].indexOf("LSTM") != -1){
+       layersType.push("lstm");
+     }
+     //Embedding
+     if(lines[i].indexOf("Embedding") != -1){
+       layersType.push("wembed");
+     }
+
+
   }
 }
 function getTFlearn(inputText){
