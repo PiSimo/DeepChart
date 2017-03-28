@@ -63,7 +63,7 @@ body{
   margin-top: 60px;
   margin-right: -10px;
   margin-left: -10px;
-  position:fixed;
+  position:relative;
   background-image: url("./code.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -131,7 +131,7 @@ height: 500px;
 #boxB{
   background-color:#37474f;
   z-index: -1;
-  widht:105%;
+  width:105%;
   margin-left: auto;
 
   margin-right: -10px;
