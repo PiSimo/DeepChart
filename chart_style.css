@@ -1,0 +1,33 @@
+.main{
+  max-width:800px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 1200px;
+  margin-top: 130px;
+}
+#code{
+  color:#fff;
+  font-size:17px;
+
+}
+.enter_stuff{
+  width:680px;
+  height: 500px;
+  background-color: #323232;
+  margin-left: 70px;
+  color:#fff;
+  font-size: 17px;
+  border-style: solid;
+  border-color: #323232;
+  box-shadow: 0px 0px 10px black;
+}
+.options{
+  width:680px;
+  color:#fff;
+  margin-top: 40px;
+  margin-left: 70px;
+}
+.press{
+  float:right;
+  cursor: pointer;
+}

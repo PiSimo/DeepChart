@@ -1,36 +1,66 @@
- <html lang="en">
-  <head>
-    <title>DeepChart</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
+<html lang="en">
+<head>
+  <title>DeepChart</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="./chart_style.css">
+  <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  </head>
+</head>
 
-  <!-- Body -->
-  <body>
-    <!-- top -->
-    <div class="top">
-      <div class="middle">
-        <div class="title">
-          <p>DeepChart</p>
-        </div>
+<!-- Body -->
+<body>
+  <!-- top -->
+  <div class="top">
+    <div class="centered">
+      <div class="title">
+        <p>DeepChart</p>
       </div>
-      <!-- menu' -->
-      <div class="opts">
+
+    <!-- menu' -->
+    <div class="opts">
+      <a href="./index.html">
         <div class="opt">
-          <a href="./index.html"><p class="links">HOME</p></a>
+          <p class="links">HOME</p>
         </div>
+      </a>
+      <a href="./chart.html">
         <div class="opt">
-          <a href="#"><p class="links">CHART</p></a>
-        </div>
-        <div class="opt">
-          <a href="#"><p class="links">ABOUT</p></a>
-        </div>
+          <p class="links">CHART</p>
       </div>
+      </a>
+      <a href="./about.html">
+        <div class="opt">
+          <p class="links">ABOUT</p>
+      </div>
+    </a>
     </div>
-    <!-- end top -->
-    <br />
-   
-  </body>
-  <!-- ! -->
+  </div>
+  </div>
+  <!-- end top -->
+  <br />
+
+  <div class="main">
+    <p id="code">Insert your keras or tflearn code:</p>
+    <textarea class="enter_stuff" rows="13" ></textarea>
+
+    <div class="options">
+      <input type="radio" name="code_type" value="plaintxt">text</input>
+      <input type="radio" name="code_type" value="keras" checked>keras</input>
+      <input type="radio" name="code_type" value="tflearn">tflearn</input>
+
+      <button class="press" id="btn">
+        GENERATE
+      </button>
+    </div>
+    <br /><br />
+      <canvas>
+        Your browser doesn't support canvas :'(
+      </canvas>
+
+  </div>
+
+<script src="main.js"></script>
+</body>
+<!-- ! -->
 </html>

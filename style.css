@@ -3,6 +3,7 @@
 
 body{
   background-color:  #37474f;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 .top{
@@ -13,14 +14,15 @@ body{
   margin-left: -10px;
   margin-top: -10px;
   margin-right: -10px;
-  height: 120px;
-  background-color:  #512da8;
+  height: 90px;
+  background-color:  #6a1b9a;
 }
-.middle{
-  margin-left: 20%;
-  float:left;
+.centered{
+  margin-left: auto;
+  max-width:1000;
 }
 .title{
+  float:left;
   color:white;
   font-size:35px;
   font-style:italic;
@@ -30,14 +32,15 @@ body{
 }
 .opts{
   float:left;
-  width:510px;
-  height: 120px;
-  margin-left:17%;
+  width:400px;
+  height: 90px;
+  margin-left: 17%;
 }
 .opt{
   float:left;
-  width:167px;
-  height: 120px;
+  max-width:170px;
+  height: 90px;
+  margin-left: px;
 }
 .opt a{
   text-decoration: none;
@@ -49,7 +52,7 @@ body{
   margin-left: 60px;
   transition-duration: 1s;
 }
-.links:hover{
+.opt:hover{
   text-shadow: 0px 0px 10px #fff;
 }
 
@@ -57,7 +60,7 @@ body{
   z-index: -1;
   widht:105%;
   position: relative;
-  margin-top: 117px;
+  margin-top: 60px;
   margin-right: -10px;
   margin-left: -10px;
 
@@ -69,21 +72,30 @@ body{
 
 }
 #opacity{
-background-color: #37474f;
-opacity: 0.8;
+/*background-color: #37474f;
+opacity: 0.8;*/
+background: rgba(0,0,0,0.8);
+z-index: -1;
+height: 500px;
 }
 #contentA{
   width:700px;
   height: 500px;
   margin-left: auto;
   margin-right: auto;
-  text-align:right;
+  z-index: 50;
+  margin-top: -500px;
+
 }
 #titleP{
 	color:white;
 	font-size:35px;
 	font-family: 'Roboto', sans-serif;
 	font-weight:bold;
+  z-index: 5;
+}
+#allig{
+  text-align: right;
 }
 #expla{
 	width:500px;
@@ -94,18 +106,80 @@ opacity: 0.8;
 	margin-left:200px;
 	color:#ffffff;
 	font-size:17px:
-	
-	}
+  text-align:right;
 
+
+}
+#try{
+  text-align: left;
+	font-family: 'Roboto', sans-serif;
+  z-index: 80;
+  font-size: 18;
+  width:500px;
+  word-spacing: 1px;
+  line-height: 30px;
+  color:#fff;
+}
+#keras{
+  color:rgba(255,0,0,1  );
+  text-decoration: none;
+}
+#tflearn{
+  color:#2196f3;
+}
 /*** Box B***/
 #boxB{
   background-color:#37474f;
   z-index: -1;
   widht:105%;
-  position: relative;
+  margin-left: auto;
+
   margin-right: -10px;
   margin-left: -10px;
 	margin-top:20px;
   margin-bottom:-50px;
-  height:230px;
+  height:500px;
+}
+#contentB{
+  width:700px;
+  height: 230px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+#gititle{
+  margin-left: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27;
+  color:#fff;
+}
+#github{
+  width:200px;
+  float:left;
+}
+#allig2{
+  text-align: right;
+  float:right;
+}
+#lateral{
+  width:400px;
+  font-size:18;
+  word-spacing:1px;
+  line-height:30px;
+  font-family: 'Roboto', sans-serif;
+  color:#ffffff;
+  font-size:17px:
+
+}
+
+.foter{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width:200px;
+}
+.footer p{
+  font-size:11px;
+  font-family: 'Roboto', sans-serif;
+  color:#ffffff;
 }
