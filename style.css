@@ -59,8 +59,7 @@ body{
 
 #boxA{
   z-index: -4;
-  widht:105%;
-  position: relative;
+  width:105%;
   margin-top: 60px;
   margin-right: -10px;
   margin-left: -10px;
