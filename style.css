@@ -19,7 +19,8 @@ body{
 }
 .centered{
   margin-left: auto;
-  max-width:1000;
+  margin-right: auto;
+  max-width:700;
 }
 .title{
   float:left;
@@ -34,7 +35,7 @@ body{
   float:left;
   width:400px;
   height: 90px;
-  margin-left: 17%;
+  margin-left: 120px;
 }
 .opt{
   float:left;
@@ -57,13 +58,13 @@ body{
 }
 
 #boxA{
-  z-index: -1;
+  z-index: -4;
   widht:105%;
   position: relative;
   margin-top: 60px;
   margin-right: -10px;
   margin-left: -10px;
-
+  position:fixed;
   background-image: url("./code.png");
   background-repeat: no-repeat;
   background-size: cover;
