@@ -23,7 +23,7 @@ body{
   max-width:700px;
 }
 .title{
-margin-left:30;
+  margin-left:30;
   float:left;
   color:white;
   font-size:35px;
@@ -36,7 +36,8 @@ margin-left:30;
   float:left;
   width:280px;
   height: 90px;
-  margin-left: 230px;
+  position: absolute;
+  margin-left: 430px;
 }
 .opt{
   float:left;
