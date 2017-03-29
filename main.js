@@ -24,7 +24,6 @@ $("#btn").click(function(){
 
 });
 function getKeras(inputText){
-var tfLayers = ["fully_connected","dropout","reshape","conv_1d","conv_2d","conv_3d","max_pool_1d","max_pool_2d","max_pool_3d","avg_pool_1d","avg_pool_2d","avg_pool_3d"];
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
     for(var t = 0;t != layersTypes.length;t++){
@@ -38,6 +37,7 @@ var tfLayers = ["fully_connected","dropout","reshape","conv_1d","conv_2d","conv_
 }
 
 function getTFlearn(inputText){
+var tfLayers = ["fully_connected","dropout","reshape","conv_1d","conv_2d","conv_3d","max_pool_1d","max_pool_2d","max_pool_3d","avg_pool_1d","avg_pool_2d","avg_pool_3d"];
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
     for(var t = 0;t != tfLayers.length;t++){
