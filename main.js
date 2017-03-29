@@ -29,8 +29,8 @@ function getKeras(inputText){
   for(var i = 0;i != lines.length;i++){
     for(var t = 0;t != layersTypes.length;t++){
       if(lines[i].indexOf(layersTypes[t]) != -1){
-        layers.push(layersTypes[i]);
-        break;
+        layers.push(layersTypes[t]);
+        
       }
     }
 
