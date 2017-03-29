@@ -1,7 +1,7 @@
 //General vars
 var layersTypes = ["fc","dropout","flat","reshape","conv1","conv2","conv3","maxp1","maxp2","maxp3","avep1","avep2","avep3","rnn","gru","lstm","wembed"];
 var kerasLayers = ["Dense","Dropout","Flatten","Reshape","Conv1D","Conv2D","Conv3D","MaxPooling1D","MaxPooling2D","MaxPooling3D","AveragePooling1D","AveragePooling2D","AveragePooling3D","SimpleRNN","GRU","LSTM","Embedding"];
-
+var tfLayers = ["fully_connected","dropout","reshape","conv_1d","conv_2d","conv_3d","max_pool_1d","max_pool_2d","max_pool_3d","avg_pool_1d","avg_pool_2d","avg_pool_3d"];
 var layers =  new Array();
 
 
