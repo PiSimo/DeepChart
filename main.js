@@ -39,50 +39,13 @@ function getKeras(inputText){
 
 function getTFlearn(inputText){
   var lines = inputText.split("\n");
- /* for(var i = 0;i != lines.length;i++){
-    if(lines[i].indexOf("fully_connected") != -1){
-        layersType.push("fc");
+  for(var i = 0;i != lines.length;i++){
+    for(var t = 0;t != tfLayers.length;t++){
+      if(lines[i].indexOf(tfLayers[t]) != -1){
+        layers.push(layersType[t]);
+      }
     }
-    if(lines[i].indexOf("dropout") != -1){
-        layersType.push("dropout");
-    }
-    if(lines[i].indexOf("reshape") != -1){
-        layersType.push("reshape");
-    }
-    if(lines[i].indexOf("flatten") != -1){
-        layersType.push("flat");
-    }
-    //IMAGES
-    if(lines[i].indexOf("conv_1d") != -1){
-        layersType.push("conv1");
-    }
-    if(lines[i].indexOf("conv_2d") != -1){
-        layersType.push("conv2");
-    }
-    if(lines[i].indexOf("conv_3d") != -1){
-        layersType.push("conv3");
-    }
-    if(lines[i].indexOf("max_pool_1d") != -1){
-      layersType.push("maxp1");
-    }
-    if(lines[i].indexOf("max_pool_2d") != -1){
-      layersType.push("maxp2");
-    }
-    if(lines[i].indexOf("max_pool_3d") != -1){
-      layersType.push("maxp3");
-    }
-    if(lines[i].indexOf("avg_pool_1d") != -1){
-      layersType.push("avgp1");
-    }
-    if(lines[i].indexOf("avg_pool_2d") != -1){
-      layersType.push("avgp2");
-    }
-    if(lines[i].indexOf("avg_pool_3d") != -1){
-      layersType.push("avgp3");
-    }
-    
-
-  }*/
+  }
 }
 function getText(inputText){
   var lines = inputText.split("\n");
