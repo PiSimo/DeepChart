@@ -1,6 +1,6 @@
 //General vars
 var layersTypes = ["fc","dropout","flat","reshape","conv1","conv2","conv3","maxp1","maxp2","maxp3","avep1","avep2","avep3","rnn","gru","lstm","wembed"];
-
+var kerasLayers = ["Dense","Dropout","Flatten","Reshape","Conv1D","Conv2D","Conv3D","MaxPooling1D","MaxPooling2D","MaxPooling3D","AveragePooling1D","AveragePooling2D","AveragePooling3D","SimpleRNN","GRU","LSTM","Embedding"];
 
 var layers =  new Array();
 
@@ -28,7 +28,7 @@ function getKeras(inputText){
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
     for(var t = 0;t != layersTypes.length;t++){
-      if(lines[i].indexOf(layersTypes[t]) != -1){
+      if(lines[i].indexOf(kerasLayers[t]) != -1){
         layers.push(layersTypes[t]);
         
       }
