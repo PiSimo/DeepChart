@@ -21,7 +21,7 @@ $("#btn").click(function(){
     getTFlearn(p);
     break;
   }
-
+  alert(layers);
 });
 function getKeras(inputText){
   var lines = inputText.split("\n");
