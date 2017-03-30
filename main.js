@@ -7,8 +7,8 @@ var layersOutput = new Array();
 
 
 $("#btn").click(function(){
-  layers = new Array();
-  layersOutput = new Array();
+  layers = ["input"];
+  layersOutput = new Array;
   var p = $(".enter_stuff").val();
   var e = $('input[type="radio"]:checked').val();
   switch(e){
@@ -31,30 +31,34 @@ $("#btn").click(function(){
 function getKeras(inputText){
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
+    lines[i] = lines[i].split(" ").join("")
+    if(lines[i][0] != '#'){
     for(var t = 0;t != layersTypes.length;t++){
       if(lines[i].indexOf(kerasLayers[t]) != -1){
         layers.push(layersTypes[t]);
-        var str = lines[i].split(",");
 
-        if(kerasLayers[t] != "Flatten" && kerasLayers[t] != "Reshape"){
-            for(var p in str){
-              var search = kerasLayers[t]+"(";
-              if(str[p].indexOf(search) != -1){
-                try{
-                  layersOutput.push(parseInt(str[p].slice(str[p].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),str[p].length).replace(")",""))) // )
-                }catch(o){
-                  alert(o);
-                }
-              }
-            }
-        }else if (kerasLayers[t] == "Flatten") {
-            layersOutput.push(-1)
+        if(kerasLayers[t] == "Flatten") {
+          layersOutput.push(-1)
         }
         else if(kerasLayers[t] == "Reshape"){
-          layersOutput.push(null)
-        }
-    }
+          layersOutput.push(lines[i].slice(lines[i].indexOf("Reshape(")+8,lines[i].indexOf(")")+1))
 
+        }
+       else{
+           var str = lines[i].split(",");
+           for(var p in str){
+             if(str[p].indexOf("input_shape") != -1|| str[p].indexOf("input_dim") != -1){
+                layersOutput.push(str[p].slice(str[p].indexOf("=")+1,str[p].length).replace(")",""))
+             }
+            }
+
+            if(layersOutput.length == 0)layersOutput.push(null);
+            layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(",")).replace(")",""))) // )
+
+        }
+        break;
+    }
+  }
   }
 }
 }
