@@ -42,7 +42,7 @@ var tfLayers = ["fully_connected","dropout","reshape","conv_1d","conv_2d","conv_
   for(var i = 0;i != lines.length;i++){
     for(var t = 0;t != tfLayers.length;t++){
       if(lines[i].indexOf(tfLayers[t]) != -1){
-        layers.push(layersType[t]);
+        layers.push(layersTypes[t]);
       }
     }
   }
