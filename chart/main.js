@@ -82,7 +82,7 @@ function getKeras(inputText){
             layersOutput.push(-1)
         }
 		
-		//Reshape handler
+	//Reshape handler
         else if(kerasLayers[t] == "Reshape"){
             layersOutput.push(lines[i].slice(lines[i].indexOf("Reshape(")+8,lines[i].indexOf(")")+1))
 
