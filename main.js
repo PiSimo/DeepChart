@@ -46,6 +46,8 @@ $("#btn").click(function(){
   console.log(layers)
   console.log(layersOutput)
   console.log(layersParameters)
+	
+  buildChart(layers,layersOutput,layersParameters);
 });
 
 
@@ -158,6 +160,4 @@ function getText(inputText){
 
 }
 
-function buildChart(){
 
-}
