@@ -38,9 +38,10 @@
   color:#fff;
   margin-top:-5px;
   padding:1% 20%;
-  font-family:Roboto;
+  font-family:'Roboto', sans-serif;
   text-align:center;
   transition-duration:1s;
+  text-decoration:none;
   
 }
 #btn:hover{
