@@ -3,12 +3,33 @@ var layersTypes = ["fc","dropout","flat","reshape","conv1","conv2","conv3","maxp
 var kerasLayers = ["Dense","Dropout","Flatten","Reshape","Conv1D","Conv2D","Conv3D","MaxPooling1D","MaxPooling2D","MaxPooling3D","AveragePooling1D","AveragePooling2D","AveragePooling3D","SimpleRNN","GRU","LSTM","Embedding"];
 var layers =  new Array();
 var layersOutput = new Array();
+var layersParameters = new Array();
 
+function getPar( str, par){
+	var pos = str.indexOf(par);
+	if(pos == -1)return -1;
+	str = str.slice(str.indexOf(par)+par.length,str.length);
+	if(str.indexOf(",")){
+		str=str.slice(0,str.indexOf(","))
+	}else{
+		str=str.slice(0,str.indexOf(")"))
+	}
+	
+	return str
+}
 
+function getArrayPar( str, par){
+	var pos = str.indexOf(par);
+	if(pos == -1)return -1;
+	str = str.slice(str.indexOf(par)+par.length,str.length);
+	str = str.slice(str.indexOf("("),str.indexOf(")")+1)
+	return str
+}
 
 $("#btn").click(function(){
   layers = ["input"];
-  layersOutput = new Array;
+  layersOutput = new Array();
+  layersParameters = new Array();
   var p = $(".enter_stuff").val();
   var e = $('input[type="radio"]:checked').val();
   switch(e){
@@ -24,6 +45,7 @@ $("#btn").click(function(){
   }
   console.log(layers)
   console.log(layersOutput)
+  console.log(layersParameters)
 });
 
 
@@ -31,32 +53,85 @@ $("#btn").click(function(){
 function getKeras(inputText){
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
-    lines[i] = lines[i].split(" ").join("")
+    lines[i] = lines[i].split(" ").join("") //OK
+	
     if(lines[i][0] != '#'){
     for(var t = 0;t != layersTypes.length;t++){
       if(lines[i].indexOf(kerasLayers[t]) != -1){
         layers.push(layersTypes[t]);
-
+		
+		//Define input shape 
+		if(layers.length == 2){
+			if(lines[i].indexOf("input_dim") != -1){
+				ris = getPar(lines[i],"input_dim=")
+				layersOutput.push(parseFloat(ris))
+			}
+			else if(lines[i].indexOf("input_shape") != -1){
+				ris = getArrayPar(lines[i],"input_shape=")
+				layersOutput.push(ris)
+			}	
+			else{
+				layersOutput.push(-4);
+			}
+		}
+		
+		//Flatten handler
         if(kerasLayers[t] == "Flatten") {
-          layersOutput.push(-1)
+            layersOutput.push(-1)
         }
+		
+		//Reshape handler
         else if(kerasLayers[t] == "Reshape"){
-          layersOutput.push(lines[i].slice(lines[i].indexOf("Reshape(")+8,lines[i].indexOf(")")+1))
+            layersOutput.push(lines[i].slice(lines[i].indexOf("Reshape(")+8,lines[i].indexOf(")")+1))
 
         }
-       else{
-           var str = lines[i].split(",");
-           for(var p in str){
-             if(str[p].indexOf("input_shape") != -1|| str[p].indexOf("input_dim") != -1){
-                layersOutput.push(str[p].slice(str[p].indexOf("=")+1,str[p].length).replace(")",""))
-             }
-            }
-
-            if(layersOutput.length == 0)layersOutput.push(null);
-            layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(",")).replace(")",""))) // )
-
+		
+		//Convolutional handler
+		else if(kerasLayers[t].indexOf("Conv") != -1){
+			if(lines[i].indexOf("filters=") != -1){
+				ris = getPar(lines[i],"filters=")
+				layersOutput.push(parseFloat(ris))
+				
+			}
+			else{
+				ris = getPar(lines[i],kerasLayers[t]+"(")
+				layersOutput.push(parseFloat(ris))
+			}
+			
+			//Kernel size
+			if(lines[i].indexOf("kernel_size") != -1){
+				ris = getArrayPar(lines[i],"kernel_size=")
+				layersParameters.push(ris)
+			}
+			else{
+				cannelloni = lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].length)
+				ris = cannelloni.slice(cannelloni[i].indexOf("("),cannelloni[i].indexOf(")")+1)
+				console.log(ris)
+			}
+		}
+		//Pooling layer
+		else if(kerasLayers[t].indexOf("Pool") != -1){
+			ris = getArrayPar(lines[i],"pool_size=")
+			layersOutput.push(ris)		
+		}
+		//All the other layers
+        else{
+            var str = lines[i].split(",");
+			if(lines[i].indexOf("units") != -1){
+					ris = getPar(lines[i],"units=")
+					ris = parseFloat(ris)
+					layersOutput.push(ris)
+			}
+			else{
+				layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(",")).replace(")",""))) // )
+			}
         }
-        break;
+		
+		//If there are no special paramaters set to null
+		if(layers.length != layersParameters.length){
+			layersParameters.push(null)
+		}
+		break;
     }
   }
   }
