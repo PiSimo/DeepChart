@@ -34,16 +34,16 @@ body{
 }
 .opts{
   float:left;
-  width:280px;
+  width:300px;
   height: 90px;
   position: absolute;
   margin-left: 410px;
 }
 .opt{
   float:left;
-  max-width:90px;
+  width:90px;
   height: 90px;
-  margin-left: px;
+  margin-left: 10px;
 }
 .opt a{
   text-decoration: none;
@@ -52,7 +52,7 @@ body{
   color:#fafafa;
   font-size:20px;
   margin-top: 50px;
-  margin-left: 60px;
+  /*margin-left: 60px;*/
   transition-duration: 1s;
 }
 .opt:hover{
