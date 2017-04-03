@@ -1,71 +1,59 @@
-<html lang="en">
-<head>
-  <title>DeepChart</title>
-  <!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
-  <link rel="stylesheet" type="text/css" href="https://pisimo.github.io/DeepChart/style.css">
-  <link rel="stylesheet" type="text/css" href="./chart_style.css">
-  <link rel="shortcut icon" type="image/png" href="https://pisimo.github.io/DeepChart/favicon.png"/>
-  <script src="./jquery.min.js"></script>
-
-</head>
-
-<!-- Body -->
+<html>
 <body>
-  <!-- top -->
-  <div class="top">
-    <div class="centered">
-      <div class="title">
-        <p>DeepChart</p>
-      </div>
+<meta charset="utf-8" />
+<title>TestChart</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<canvas id="canv" style="width:500px;height:500px;border:1px solid black;">
 
-    <!-- menu' -->
-    <div class="opts">
-        
-           <a href="https://pisimo.github.io/DeepChart/index.html"><div class="opt">
-		  <p class="links">HOME</p>
-	  </div></a>
-        
-       
-           <a href="./chart.html"><div class="opt">
-		  <p class="links">CHART</p>
-		   </div></a>
-        
-          <a href="./about.html"><div class="opt">
-		  <p class="links">ABOUT</p>
-	      </div></a>
-      
-</div>
-  </div>
-  </div>
-  <!-- end top -->
-  <br />
+</canvas>
+<button onclick="dosome()" class="btn btn-primary btn-lg">2Image</button>
 
-  <div class="main">
-    <p id="code">Your keras or tflearn code:</p>
-    <textarea class="enter_stuff" rows="13">#Try this model to see the output ('#' to comment)
-Dense(3,input_dim=23)
-Dense(9,activation='sigmoid')	
-Dense(1,activation='softmax')
-</textarea>
+<script>
+var canvas = document.getElementById("canv");
+var ctx = canvas.getContext('2d');
 
-    <div class="options">
-      <input type="radio" name="code_type" value="plaintxt">text</input>
-      <input type="radio" name="code_type" value="keras" checked>keras</input>
-      <input type="radio" name="code_type" value="tflearn">tflearn</input>
+function writeCNN(x,y){
+  k = 4
 
-      <button class="press" id="btn">
-        GENERATE
-      </button>
-    </div>
-    <br /><br />
-      <canvas>
-        Your browser doesn't support canvas :'(
-      </canvas>
+  dim = 50
+  var img = new Image()
+  img.addEventListener('load', function() {
 
-  </div>
+    ctx.drawImage(img,x,y,100,100)
+  });
+  img.src = 'CnnBlue.png'
 
-<script src="./buildChart.js"></script>
-<script src="./main.js"></script>
+
+/*
+//  ctx.fillStyle='rgba(20,200,20)';
+//  ctx.fillRect(begin,
+//               begin,
+//               begin+dim,
+//               begin+dim)
+
+  //lines
+  ctx.beginPath()
+  ctx.lineWidth=1;
+  ctx.fillStyle = 'rgb(20,140,20)'
+  ctx.moveTo(begin,begin)
+  ctx.lineTo(begin+k,begin-k)
+  ctx.lineTo(begin+k+dim+begin,begin-k)
+  ctx.lineTo(begin+k+dim+begin,begin+2*k+dim)
+  ctx.lineTo(begin+dim+begin,begin+dim+k+begin-3)
+  ctx.lineTo(begin+dim+begin,begin-k+dim)
+  ctx.lineTo(begin+dim+begin,begin)
+  ctx.lineTo(begin,begin)
+  ctx.fill();
+*/
+}
+
+writeCNN(50,50)
+
+
+function dosome(){
+var img = canvas.toDataURL('image/png').replace('image/png','image-octet-stream');
+window.location.href=img;
+}
+</script>
 </body>
-<!-- ! -->
 </html>
