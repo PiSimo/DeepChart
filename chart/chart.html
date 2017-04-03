@@ -49,11 +49,16 @@ Dense(9,activation='sigmoid')
 Dense(1,activation='softmax')
 </textarea>
 
-    <div class="options">
-      <input type="radio" name="code_type" value="plaintxt">text</input>
-      <input type="radio" name="code_type" value="keras" checked>keras</input>
-      <input type="radio" name="code_type" value="tflearn">tflearn</input>
-
+    <div class="options btn-group" data-toogle='buttons'>
+      <label class='btn btn-info'>
+	      <input type="radio" name="code_type" value="plaintxt">text</input>
+      </label>
+      <label class='btn btn-info'>
+      	<input type="radio" name="code_type" value="keras" checked>keras</input>
+       </label>
+      	<label class='btn btn-info'>
+      		<input type="radio" name="code_type" value="tflearn">tflearn</input>
+	</label>
       <button class="press" id="bt btn btn-primary btn-lg"> 
         GENERATE
       </button>
