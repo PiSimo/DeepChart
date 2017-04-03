@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body{
-  background-color:  #37474f;
+  background-color:  #37474f !important;
   font-family: 'Fira Sans Condensed', sans-serif;
 }
 
