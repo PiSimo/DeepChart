@@ -31,7 +31,8 @@
   float:right;
   cursor: pointer;
 }
-#bt{
+/*
+#{
   background-color:#01579B;
   border:none;
   border-radius:3px;
@@ -44,5 +45,5 @@
   text-decoration:none;
   box-shadow: 0px 0px 10px #000;
   
-}
+}*/
 
