@@ -26,7 +26,7 @@ function getArrayPar( str, par){
 	return str
 }
 
-$("#btn").click(function(){
+$(".press").click(function(){
   layers = ["input"];
   layersOutput = new Array();
   layersParameters = new Array();
