@@ -15,13 +15,15 @@ var ctx = canvas.getContext('2d');
 canvas.width=2000
 canvas.height=2000
 
+//.... 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function writeCNN(p,wid,hei,nlayer){
+//Draw CNN
+function drawCNN(p,wid,hei,nlayer){
   var names = ["CnnRed.png","CnnYellow.png","CnnBlue.png","CnnGreen.png"]
   var img = new Image()
   img.addEventListener('load', function() {
@@ -36,6 +38,36 @@ function writeCNN(p,wid,hei,nlayer){
   ctx.fillText(String(wid),p[0]+110,p[1]+380) //width text
   ctx.fillText(String(hei),p[0]-80,p[1]+170) //length text
 }
+
+//Drawing dense layers
+function drawFc(p,n){
+	var img = new Image();
+	img.addEventListener('load',function(){
+		ctx.drawImage(img,p[0],p[1]
+	});
+	var name = "";
+	var width = 0;
+	switch(n){
+		case 1:
+		name = "./imgs/nn1.png";
+		width = 50;
+		break;
+		case 2:
+		name = "./imgs/nn2.png";
+		width= 100;
+		case 3:
+		name = "./imgs/nn3.png";
+		width=150;
+		default:
+		name = "./imgs/nnn.png";
+		width = 200;
+	}
+	img.src = name;
+	 var center = ((p[0]+(p[0]+width))/2) -10;
+	ctx.fillText(String(n),
+}
+
+//Connect CNN with CNN and Pools
 function connectCNN(pos_one,pos_two){
 		ctx.beginPath()
 		ctx.strokeStyle = "#FFEB00"
@@ -48,12 +80,15 @@ function connectCNN(pos_one,pos_two){
 		ctx.lineWidth=5
 		ctx.stroke()
 }
+
+
+//Test
 a = [200,200]
 b = [200,600]
 c = [200,1000]
-writeCNN(a,40,40,17)
-writeCNN(b,40,40,17)
-writeCNN(c,17,17,17)
+drawCNN(a,40,40,17)
+drawCNN(b,40,40,17)
+drawCNN(c,17,17,17)
 connectCNN(a,b)
 connectCNN(b,c)
 
