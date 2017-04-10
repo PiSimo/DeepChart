@@ -2,102 +2,14 @@
 <body>
 <meta charset="utf-8" />
 <title>TestChart</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
+<script src="http://www.nihilogic.dk/labs/canvas2image/canvas2image.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<canvas id="canv" style="width:700px;height:700px;border:1px solid black;">
+<canvas id="canv" style="background-color:#fff;width:500px;height:2500px;border:1px solid black;">
 
 </canvas>
 <button onclick="dosome()" class="btn btn-primary btn-lg">2Image</button>
-
-<script>
-var canvas = document.getElementById("canv");
-var ctx = canvas.getContext('2d');
-canvas.width=2000
-canvas.height=2000
-
-//.... 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-//Draw CNN
-function drawCNN(p,wid,hei,nlayer){
-  var names = ["CnnRed.png","CnnYellow.png","CnnBlue.png","CnnGreen.png"]
-  var img = new Image()
-  img.addEventListener('load', function() {
-    ctx.drawImage(img,p[0],p[1],300,300)
-  });
-  
-  var c = getRandomInt(0,4)
-  img.src = "./imgs/"+names[c]
-  
-  
-  ctx.font = '40px Roboto '
-  ctx.fillText(String(wid),p[0]+110,p[1]+380) //width text
-  ctx.fillText(String(hei),p[0]-80,p[1]+170) //length text
-}
-
-//Drawing dense layers
-function drawFc(p,n){
-	var img = new Image();
-	img.addEventListener('load',function(){
-		ctx.drawImage(img,p[0],p[1]
-	});
-	var name = "";
-	var width = 0;
-	switch(n){
-		case 1:
-		name = "./imgs/nn1.png";
-		width = 50;
-		break;
-		case 2:
-		name = "./imgs/nn2.png";
-		width= 100;
-		case 3:
-		name = "./imgs/nn3.png";
-		width=150;
-		default:
-		name = "./imgs/nnn.png";
-		width = 200;
-	}
-	img.src = name;
-	 var center = ((p[0]+(p[0]+width))/2) -10;
-	ctx.fillText(String(n),
-}
-
-//Connect CNN with CNN and Pools
-function connectCNN(pos_one,pos_two){
-		ctx.beginPath()
-		ctx.strokeStyle = "#FFEB00"
-		ctx.moveTo(pos_one[0],pos_one[1]+300)
-		ctx.lineTo(pos_two[0]+20,pos_two[1]+150)
-		
-		ctx.moveTo(pos_one[0]+270,pos_one[1]+300)
-		ctx.lineTo(pos_two[0]+294,pos_two[1]+2)
-		
-		ctx.lineWidth=5
-		ctx.stroke()
-}
-
-
-//Test
-a = [200,200]
-b = [200,600]
-c = [200,1000]
-drawCNN(a,40,40,17)
-drawCNN(b,40,40,17)
-drawCNN(c,17,17,17)
-connectCNN(a,b)
-connectCNN(b,c)
-
-
-/Button
-function dosome(){
-var img = canvas.toDataURL('image/png')//.replace('image/png','image-octet-stream');
-window.location.href=img;
-}
-</script>
+<img id="theimage"></image>
+<script src='buildChart.js'></script>
 </body>
 </html>
