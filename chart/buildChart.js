@@ -1,20 +1,21 @@
+//["fc","dropout","flat","reshape","conv1","conv2","conv3",
+//"maxp1","maxp2","maxp3","avep1","avep2","avep3","rnn"*3,"wembed"];
 
-//BUILD chart
-function buildChart(layers,output,parameters){
-  for(i in layers){
-
-  }
-
-}
-
-
-//chart_
 var topDistance = 200;   //Starting from 200px from the top
 var centerLine = 600;    //The main line is 600px from the left
-var canvas = document.getElementById("canv");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
 canvas.width=1000        //Canvas basic width
 canvas.height=500;       //Canvas basic height
+
+canvas.height = 200+700*2+300*2;
+
+
+
+
+
+//chart_
+
 
 //Function to generate random number among a range
 function getRandomInt(min, max) {
@@ -54,11 +55,11 @@ function drawCNN(wid,hei,nlayer){
 function drawFc(n_layers){
   //general vars
   var pos = [centerLine,topDistance];
-	var img = new Image();
+  var img = new Image();
   var width = 0;
   var height = 200;
   var colors = ["blue/","green/","red/"];
-	var name = "./imgs/neurons/";
+  var name = "./imgs/neurons/";
   name += colors[getRandomInt(0,3)];
 	switch(n_layers){        //change width  for the numbers of neurons
 		case 1:
@@ -247,8 +248,8 @@ function connectCNN2NN(isFirst1D,secondNeurons,type,more){ // if secondNeurons =
   }
 }
 
-canvas.height = 200+700*2+300*2;
-//Test
+
+/*
 drawImage();
 drawCNN(2,200,2);
 connectCNN2CNN(3,3);
@@ -256,13 +257,88 @@ drawRnn(90);
 connectCNN2NN(false,-1,1,[23,23])
 drawFc(5);
 connectNN2NN(true)
-
+*/
 
 
 function to_image(){
-  document.getElementById("theimage").src = canvas.toDataURL();
-  Canvas2Image.saveAsPNG(canvas);
+ // document.getElementById("theimage").src = canvas.toDataURL();
+  //Canvas2Image.saveAsPNG(canvas);
+  location.href=canvas.toDataURL("image/png");
 }
-function dosome(){
-  to_image();
+
+
+//BUILD chart
+function buildChart(layers,output,parameters){
+  for(i in layers){
+	  var cotica = layers[i];
+	  switch(cotica){
+		case "input":
+		
+		break;
+	//Fully connected
+		case "fc":
+		var neurons = output[i];
+		console.log("gugu");
+		drawFc(neurons);
+		break;
+	//Dropout	
+		case "dropout":
+		
+		break;
+	//Flatten
+		case "flat":
+		
+		break;
+	//Reshape
+		case "reshape":
+		
+		break;
+	//CONVS:
+		case "conv1":
+		
+		break;
+		case "conv2":
+		
+		break;
+		case "conv3":
+		
+		break;
+	//POOLING:
+	//	MAX:
+		case "maxp1": //Max pooling 1D
+		
+		break;
+		
+		case "maxp2":
+		
+		break;
+		case "maxp3":
+		
+		break;
+	//  AVERAGE
+		case "avep1":
+		
+		break;
+		case "avep2":
+		
+		break;
+		case "avep3":
+		
+		break;
+	// RNN (gru,lstm,SimpleRNN)
+		case "rnn":
+		
+		break;
+	//Embedding text input
+		case "wembed":
+		
+		break;
+		default:
+		alert("MY GODDDDDD AN ERRORRRRR OCCURED");
+		
+		
+	  }
+
+  }
+
 }

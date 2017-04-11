@@ -1,9 +1,11 @@
 //General vars
-var layersTypes = ["fc","dropout","flat","reshape","conv1","conv2","conv3","maxp1","maxp2","maxp3","avep1","avep2","avep3","rnn","gru","lstm","wembed"];
+var layersTypes = ["fc","dropout","flat","reshape","conv1","conv2","conv3","maxp1","maxp2","maxp3","avep1","avep2","avep3","rnn","rnn","rnn","wembed"];
 var kerasLayers = ["Dense","Dropout","Flatten","Reshape","Conv1D","Conv2D","Conv3D","MaxPooling1D","MaxPooling2D","MaxPooling3D","AveragePooling1D","AveragePooling2D","AveragePooling3D","SimpleRNN","GRU","LSTM","Embedding"];
 var layers =  new Array();
 var layersOutput = new Array();
 var layersParameters = new Array();
+var topDistance = 200;   //Starting from 200px from the top
+var centerLine = 600;
 
 function getPar( str, par){
 	var pos = str.indexOf(par);
@@ -25,8 +27,17 @@ function getArrayPar( str, par){
 	str = str.slice(str.indexOf("("),str.indexOf(")")+1)
 	return str
 }
+$("#canvas").click(function(){
+		to_image();
+		
+});
 
 $(".press").click(function(){
+	
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  topDistance = 200;   //Starting from 200px from the top
+  centerLine = 600; 
   layers = ["input"];
   layersOutput = new Array();
   layersParameters = new Array();
@@ -48,6 +59,7 @@ $(".press").click(function(){
   console.log(layersParameters)
 	
   buildChart(layers,layersOutput,layersParameters);
+
 });
 
 
@@ -141,7 +153,7 @@ function getKeras(inputText){
 }
 
 
-//Function To parse tflearn syntax
+//Function To parse tflearn syntax(in the future...)
 function getTFlearn(inputText){
 var tfLayers = ["fully_connected","dropout","flatten","reshape","conv_1d","conv_2d","conv_3d","max_pool_1d","max_pool_2d","max_pool_3d","avg_pool_1d","avg_pool_2d","avg_pool_3d"];
   var lines = inputText.split("\n");
