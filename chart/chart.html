@@ -22,20 +22,20 @@
 
     <!-- menu' -->
    <div class="opts">
-        
+
           <a href="https://pisimo.github.io/DeepChart/"><div class="opt">
 		  <p class="links">HOME</p>
 	  </div></a>
-        
-       
+
+
            <a href="./chart.html"><div class="opt">
 		  <p class="links">CHART</p>
 		   </div></a>
-        
+
           <a href="https://pisimo.github.io/DeepChart/about.html"><div class="opt">
 		  <p class="links">ABOUT</p>
 	      </div></a>
-      
+
       </div>
   </div>
   </div>
@@ -46,7 +46,7 @@
     <p id="code">Your keras or tflearn code:</p>
     <textarea class="enter_stuff" rows="13">#Try this model to see the output ('#' to comment)
 Dense(3,input_dim=3)
-Dense(9,activation='sigmoid')	
+Dense(9,activation='sigmoid')
 Dense(1,activation='softmax')
 </textarea>
 
@@ -61,12 +61,13 @@ Dense(1,activation='softmax')
       		<input type="radio" name="code_type" value="tflearn">tflearn
 	</label>
       </div>
-     <button class="btn btn-warning btn-md press"> 
+     <button class="btn btn-warning btn-md press">
         GENERATE
       </button>
-   
-    <br /><br />
-      <canvas id="canvas"  style="position:absolute;visibility:none;background-color:#fff;width:250px;height:500px;border:1px solid black;">
+
+    <br /><br /><br /><br />
+    <p id="code">Network preview (click on it to get the image):</p>
+      <canvas id="canvas">
         Your browser doesn't support canvas :'(
       </canvas>
 	  <img id="theimage"></image>

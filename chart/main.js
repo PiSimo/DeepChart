@@ -16,7 +16,7 @@ function getPar( str, par){
 	}else{
 		str=str.slice(0,str.indexOf(")"))
 	}
-	
+
 	return str
 }
 
@@ -29,18 +29,19 @@ function getArrayPar( str, par){
 }
 $("#canvas").click(function(){
 		to_image();
-		
+
 });
 
 $(".press").click(function(){
-	
+
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   topDistance = 200;   //Starting from 200px from the top
-  centerLine = 600; 
+  centerLine = 600;
   layers = ["input"];
   layersOutput = new Array();
   layersParameters = new Array();
+	layersParameters.push(null);
   var p = $(".enter_stuff").val();
   var e = $('input[type="radio"]:checked').val();
   switch(e){
@@ -54,10 +55,9 @@ $(".press").click(function(){
     getTFlearn(p);
     break;
   }
-  console.log(layers)
-  console.log(layersOutput)
-  console.log(layersParameters)
-	
+  console.log("Network architecture:["+layers+"]")
+
+
   buildChart(layers,layersOutput,layersParameters);
 
 });
@@ -68,13 +68,13 @@ function getKeras(inputText){
   var lines = inputText.split("\n");
   for(var i = 0;i != lines.length;i++){
     lines[i] = lines[i].split(" ").join("") //OK
-	
+
     if(lines[i][0] != '#'){
     for(var t = 0;t != layersTypes.length;t++){
       if(lines[i].indexOf(kerasLayers[t]) != -1){
         layers.push(layersTypes[t]);
-		
-		//Define input shape 
+
+		//Define input shape
 		if(layers.length == 2){
 			if(lines[i].indexOf("input_dim") != -1){
 				ris = getPar(lines[i],"input_dim=")
@@ -83,66 +83,83 @@ function getKeras(inputText){
 			else if(lines[i].indexOf("input_shape") != -1){
 				ris = getArrayPar(lines[i],"input_shape=")
 				layersOutput.push(ris)
-			}	
+			}
 			else{
 				layersOutput.push(-4);
 			}
 		}
-		
+
 		//Flatten handler
         if(kerasLayers[t] == "Flatten") {
             layersOutput.push(-1)
         }
-		
+
 	//Reshape handler
         else if(kerasLayers[t] == "Reshape"){
             layersOutput.push(lines[i].slice(lines[i].indexOf("Reshape(")+8,lines[i].indexOf(")")+1))
 
         }
-		
+
 		//Convolutional handler
 		else if(kerasLayers[t].indexOf("Conv") != -1){
 			if(lines[i].indexOf("filters=") != -1){
 				ris = getPar(lines[i],"filters=")
 				layersOutput.push(parseFloat(ris))
-				
+
 			}
 			else{
 				ris = getPar(lines[i],kerasLayers[t]+"(")
 				layersOutput.push(parseFloat(ris))
 			}
-			
+
 			//Kernel size
 			if(lines[i].indexOf("kernel_size") != -1){
 				ris = getArrayPar(lines[i],"kernel_size=")
 				layersParameters.push(ris)
 			}
+			else if(lines[i].indexOf("Conv1D") == -1){
+				var cannelloni = lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+kerasLayers[t].length+1,lines[i].length)
+				ris = cannelloni.slice(cannelloni.indexOf("("),cannelloni.indexOf(")")+1)
+				layersParameters.push(ris)
+			}
 			else{
-				cannelloni = lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].length)
-				ris = cannelloni.slice(cannelloni[i].indexOf("("),cannelloni[i].indexOf(")")+1)
-				console.log(ris)
+				var cannelloni = lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+kerasLayers[t].length+1,lines[i].length);
+				ris = cannelloni.slice(cannelloni.indexOf(",")+1,cannelloni.length);
+
+				if(ris.indexOf(",") != -1){
+								ris = ris.slice(0,cannelloni.indexOf(","));
+				}else{
+								ris = ris.slice(0,cannelloni.indexOf(")"));
+				}
+				layersParameters.push(ris);
 			}
 		}
 		//Pooling layer
 		else if(kerasLayers[t].indexOf("Pool") != -1){
 			ris = getArrayPar(lines[i],"pool_size=")
-			layersOutput.push(ris)		
+			layersOutput.push(ris)
 		}
 		//All the other layers
-        else{
-            var str = lines[i].split(",");
+    else{
+      var str = lines[i].split(",");
 			if(lines[i].indexOf("units") != -1){
 					ris = getPar(lines[i],"units=")
 					ris = parseFloat(ris)
 					layersOutput.push(ris)
 			}
 			else{
-				layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(",")).replace(")",""))) // )
+				if(lines[i].indexOf(",") != -1){
+				  layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(",")).replace(")",""))) // )
+			  }
+				else{
+					layersOutput.push(parseFloat(lines[i].slice(lines[i].indexOf(kerasLayers[t]+"(")+(kerasLayers[t].length+1),lines[i].indexOf(")")).replace(")",""))) // )
+
+				}
 			}
         }
-		
+
 		//If there are no special paramaters set to null
-		if(layers.length != layersParameters.length){
+		if(lines[i].indexOf("Conv") == -1){
 			layersParameters.push(null)
 		}
 		break;
@@ -171,5 +188,3 @@ function getText(inputText){
   var lines = inputText.split("\n");
 
 }
-
-

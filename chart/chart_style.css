@@ -2,20 +2,19 @@
   margin-left:0px!important;
 }
 .title{
-  
+
   margin-top:30px !important;
 }
 .main{
   max-width:800px;
   margin-left: auto;
   margin-right: auto;
-  min-height: 1200px;
+  /*min-height: 1200px;*/
   margin-top: 130px;
 }
 #code{
   color:#fff;
   font-size:17px;
-
 }
 .enter_stuff{
   width:680px;
@@ -43,3 +42,10 @@
   margin-right:50px !important;
 }
 
+#canvas{
+  position:absolute;
+  /*background-color:#fff;*/
+  width:680px !important;
+  height:0px;
+  margin-left: 70px;
+}
