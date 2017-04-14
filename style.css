@@ -65,8 +65,8 @@ body{
   margin-top: 60px;
   margin-right: -10px;
   margin-left: -10px;
-  position:relative;
-  background-image: url("./code.png");
+  position:absolute;
+  background-image: url("./neurones.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color:#fff;
@@ -138,7 +138,7 @@ height: 500px;
 
   margin-right: -10px;
   margin-left: -10px;
-	margin-top:20px;
+  margin-top:600px;
   margin-bottom:-50px;
   height:300px;
 }
