@@ -41,7 +41,7 @@ $(".press").click(function(){
   layers = ["input"];
   layersOutput = new Array();
   layersParameters = new Array();
-	layersParameters.push(null);
+  layersParameters.push(null);
   var p = $(".enter_stuff").val();
   var e = $('input[type="radio"]:checked').val();
   switch(e){
