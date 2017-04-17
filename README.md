@@ -11,7 +11,6 @@ Neural network code(keras):
  net = Sequential()
  net.add(Dense(12,kernel_initializer=w_init,input_dim=12,activation='linear'))
  net.add(Reshape((1,12)))
- net.add(BatchNormalization())
  net.add(GRU(40,kernel_initializer=w_init,activation=act,return_sequences=True))
  net.add(Dropout(0.4))
  net.add(GRU(70,kernel_initializer=w_init,activation=act,return_sequences=True))
