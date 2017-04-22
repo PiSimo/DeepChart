@@ -24,4 +24,4 @@ Neural network code(keras):
 
 Generated image:
 
-<img width=500 height=800 src="https://cloud.githubusercontent.com/assets/17238972/25045757/1fb9e1c6-212e-11e7-80db-acb4665d4dbb.png">
+<img width=500 height=800 src="https://cloud.githubusercontent.com/assets/17238972/25303841/4945f448-275b-11e7-8ad9-e4c9601a7d3a.png">
